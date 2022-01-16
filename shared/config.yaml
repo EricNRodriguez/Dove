@@ -1,0 +1,14 @@
+server:
+  addr: 127.0.0.1
+  port: 8080
+
+auth:
+  jwtSecret: "523043DB60C1E1730C5AE2907F6BE64C3ECAFFD0D8400CE0256287A96004C0B4"
+  expiryTimeMinutes: 1440
+  hashCost: 10
+
+postgres:
+  user: "eric"
+  dbname: "dove"
+  host: "127.0.0.1"
+  port: 5432

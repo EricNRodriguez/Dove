@@ -1,0 +1,108 @@
+syntax = "proto3";
+package messageschema;
+
+message LoginRequestData {
+	string username = 1;
+	string password = 2;
+}
+
+message LoginResponseData {
+	string auth_token = 1;
+	UserData user = 2;
+}
+
+message RegisterRequestData {
+	string username = 1;
+	string password = 2;
+}
+
+message RegisterResponseData {
+	string auth_token = 1;
+	UserData user = 2;
+}
+
+message ImageData {
+	bytes data = 1;
+}
+
+message NewFeaturePointRequestData {
+	string title = 1;
+	string description = 2;
+	LocationData location = 3;
+	repeated ImageData images = 4;
+}
+
+message NewFeaturePointResponseData {
+	FeaturePointData feature_point = 1;
+}
+
+message LocationData {
+	double latitude = 1;
+	double longitude = 2;
+}
+
+message FeaturePointData {
+	int64 feature_point_id = 1;
+	string title = 2;
+	string description = 3;
+	LocationData location = 4;
+	int64 owner_id = 5;
+	int64 created_at = 6; 
+	repeated FeaturePointImageData images = 7;
+}
+
+message FeaturePointImageData {
+	int32 id = 1;
+	NetworkImageData image = 2;
+}
+
+message NetworkImageData {
+	string local_path = 1;
+}
+
+message UpdateFeaturePointRequestData {
+        int32 id = 1;
+        string title = 2;
+        string description = 3;
+        repeated ImageData uploaded = 4;
+        repeated FeaturePointImageData deleted = 5;
+}
+
+message UpdateFeaturePointResponseData {
+}
+
+
+message GetAllFeaturePointsWithinBoundsResponseData {
+	repeated FeaturePointData feature_points = 1;
+}
+
+message GetUserByIdResponseData {
+        UserData user = 1;
+}
+
+message UserData {
+        int64 user_id = 1;
+        string username = 2;
+	string about = 3;
+        int64 created_at = 4;
+	NetworkImageData profile_image = 5;
+}
+
+message DeleteFeaturePointResponseData {
+}
+
+message NewProfileImageRequestData {
+	ImageData image = 1;
+}
+
+message NewProfileImageResponseData {
+	NetworkImageData image = 1;
+}
+
+message UpdateUserProfileRequestData {
+	string username = 1;
+	string about = 2;
+}
+
+message UpdateUserProfileResponseData {
+}
